@@ -1,0 +1,48 @@
+on:
+  push:
+    branches: [ "main" ]
+  workflow_dispatch:
+  
+permissions:
+  contents: read
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+    - name: Git pull
+      uses: appleboy/ssh-action@v1.0.0
+      with:
+        host: ${{ secrets.HOST }}
+        username: ${{ secrets.USER }}
+        key: ${{ secrets.PRIVATE_KEY }}
+        script: |
+            cd /home/docker-config/images/your-body-lab-website
+            git pull
+        
+    - name: Install dependencies
+      uses: appleboy/ssh-action@v1.0.0
+      with:
+        host: ${{ secrets.HOST }}
+        username: ${{ secrets.USER }}
+        key: ${{ secrets.PRIVATE_KEY }}
+        script: |
+            npm install
+              
+    - name: Build Astro website
+      uses: appleboy/ssh-action@v1.0.0
+      with:
+        host: ${{ secrets.HOST }}
+        username: ${{ secrets.USER }}
+        key: ${{ secrets.PRIVATE_KEY }}
+        script: |
+          npm astro build
+
+    - name: Copy files to nginx webserver
+      uses: appleboy/ssh-action@v1.0.0
+      with:
+        host: ${{ secrets.HOST }}
+        username: ${{ secrets.USER }}
+        key: ${{ secrets.PRIVATE_KEY }}
+        script: |
+          cp -a /home/docker-config/images/your-body-lab-website/dist/. /home/docker-config/volumes/webserver/www/yourbodylab.app/public/
