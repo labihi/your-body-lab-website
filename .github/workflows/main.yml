@@ -27,6 +27,7 @@ jobs:
         username: ${{ secrets.USER }}
         key: ${{ secrets.PRIVATE_KEY }}
         script: |
+            cd /home/docker-config/images/your-body-lab-website
             npm install
               
     - name: Build Astro website
@@ -36,6 +37,7 @@ jobs:
         username: ${{ secrets.USER }}
         key: ${{ secrets.PRIVATE_KEY }}
         script: |
+          cd /home/docker-config/images/your-body-lab-website
           npm astro build
 
     - name: Copy files to nginx webserver
