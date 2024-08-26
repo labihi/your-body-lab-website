@@ -21,23 +21,37 @@ import { Icon } from "astro-icon";
   <div>
     <h1
       class="text-5xl lg:text-6xl xl:text-7xl font-bold lg:tracking-tight xl:tracking-tighter">
-      Your Body Lab, an app for your health and fitness
+      Your Body Lab, un'app per il fitness e la salute
     </h1>
     <p class="text-lg mt-4 text-slate-600 max-w-xl">
-      We provide you with the best health and fitness app to help you achieve your goals in different ways.
-      We have a team of experts who will guide you through your journey in all
-      aspects of your health and fitness, from nutrition to exercise.
+      Ti forniamo la miglior app per la salute e il fitness per aiutarti a
+      raggiungere i tuoi obiettivi in modi diversi. Abbiamo un team di esperti
+      che ti guiderà nel tuo viaggio in tutti gli aspetti della tua salute e del
+      tuo fitness, dalla nutrizione all'esercizio fisico.
     </p>
-    <div class="mt-6 flex flex-col sm:flex-row gap-3">
-      <Link
-        href=""
-        target="_blank"
-        class="flex gap-1 items-center justify-center"
-        rel="noopener">
-        <Icon class="text-white w-5 h-5" name="bx:bxs-cloud-download" />
+    <div class="sm:flex gap-3">
+      <div class="mt-6 flex flex-col sm:flex-row gap-3">
+        <Link
+          href="https://play.google.com/store/apps/details?id=app.yourbodylab.your_body_lab_flutter&pcampaignid=web_share"
+          target="_blank"
+          class="flex gap-1 items-center justify-center"
+          rel="noopener">
+          <Icon class="text-white w-5 h-5" name="bx:bxl-android" />
 
-        Soon on the App Stores
-      </Link>
+          Download su Play Store
+        </Link>
+      </div>
+      <div class="mt-6 flex flex-col sm:flex-row gap-3">
+        <Link
+          href="https://apps.apple.com/it/app/your-body-lab/id1663469215?l=en-GB"
+          target="_blank"
+          class="flex gap-1 items-center justify-center"
+          rel="noopener">
+          <Icon class="text-white w-5 h-5" name="bx:bxl-apple" />
+
+          Download su App Store
+        </Link>
+      </div>
     </div>
   </div>
 </main>
